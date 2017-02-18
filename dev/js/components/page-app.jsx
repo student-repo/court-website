@@ -10,6 +10,9 @@ import {syncHistoryWithStore} from 'react-router-redux'
 import TabsExampleIconText from './example-tab'
 import io from 'socket.io-client';
 import _ from 'underscore'
+import scrollToElement from 'scroll-to-element';
+
+scrollToElement('#id');
 
 
 const logger = createLogger();
@@ -29,6 +32,10 @@ const News = () => {
         else{
             console.log(data.data)
         }
+    });
+    scrollToElement('.ddd123', {
+        offset: 0,
+        duration: 1500
     });
     return(
     <div>
@@ -71,6 +78,121 @@ const App = ({children}) => {
     <div>
         <TabsExampleIconText socket={socket}/>
         {children}
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <div className="ddd123">
+            <h1>ala ma kota</h1>
+        </div>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
+        <p>wadwfd awfa wf</p>
     </div>
 )}
 
