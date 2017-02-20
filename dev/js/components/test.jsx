@@ -1,7 +1,7 @@
 import React from 'react';
 import * as galleryCss from '../../scss/galleryCss.css'
 import ImageGallery from './image-gallery';
-// import ImageGallery from 'react-image-gallery'
+import {Col, Row} from "pui-react-grids";
 
 const images = [
     {
@@ -24,15 +24,16 @@ const images = [
     }
 ];
 
+
 const App1 = () => {
     return (
 
-        <section className='app'>
+        <Row className='app' >
             <ImageGallery
                 style={galleryCss}
                 items={images}
             />
-        </section>
+            </Row>
     );
 }
 

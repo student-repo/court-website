@@ -13,9 +13,7 @@ import App from './app';
 import News from './news'
 import ImageGallery from 'react-image-gallery'
 import App1 from './test'
-// import * as sss from '../../scss/div-style.css'
-// import * as sss1 from '../../../src/react-image.png'
-
+import {Col, Row} from "pui-react-grids";
 
 
 const logger = createLogger();
@@ -57,21 +55,6 @@ const Prices = () => (
     </div>
 )
 
-var divStyle = {
-    backgroundImage: 'url(react-image.png)',
-    top: '0px',
-    position: 'fixed',
-    zIndex: '100',
-    width: '100%'
-};
-var divStyle2 = {
-//     height: '249px',
-// width: '50px',
-// position: 'fixed',
-// left: '0px',
-// top: '200px',
-// zIndex: '100'
-};
 
 
 const AppWithProps = () => {
@@ -79,13 +62,6 @@ const AppWithProps = () => {
         <App socket={socket}>
             <App1/>
             <News socket={socket}/>
-            <div style={divStyle}>
-                <div style={divStyle2}>
-                <p>ala ma kota ala ma kota ala ma kotaala ma kota ala ma kota ala ma kota ala ma kotaala</p>
-                    </div>
-                <br/>
-                ala ma kota ala ma kota ala ma kotaala ma kota ala ma kota ala ma kota ala ma kotaala
-            </div>
             <TennisSchool/>
             <Gallery/>
             <Prices/>

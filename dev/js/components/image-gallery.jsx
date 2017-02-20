@@ -9,25 +9,25 @@ const screenChangeEvents = [
     'webkitfullscreenchange'
 ];
 
+const style = {
+    'maxWidth': '100%',
+    'cursor': 'pointer',
+    'MaxHeight': '500px',
+    'marginTop': '100px'
+}
 
 const images = [
     {
-        original: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/1.jpg`,
-        thumbnail: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/1t.jpg`,
+        original: `tennis-banner-3.jpg`,
         originalClass: 'featured-slide',
-        thumbnailClass: 'featured-thumb',
         description: 'Custom class for slides & thumbnails'
     },
     {
-        thumbnail: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/3v.jpg`,
-        original: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/3v.jpg`,
-        embedUrl: 'https://www.youtube.com/embed/iNJdPyoqt8U?autoplay=1&showinfo=0',
+        original: `tennis-ball-resize2.jpg`,
         description: 'Render custom slides within the gallery',
     },
     {
-        thumbnail: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/4v.jpg`,
-        original: `https://raw.githubusercontent.com/xiaolin/react-image-gallery/master/static/4v.jpg`,
-        embedUrl: 'https://www.youtube.com/embed/4pSzhZ76GdM?autoplay=1&showinfo=0',
+        original: `tennis-racket3.jpg`,
     }
 ];
 
@@ -611,6 +611,19 @@ export default class ImageGallery extends React.Component {
 
         return (
             <div className='image-gallery-image'>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <img
                     src={item.original}
                     alt={item.originalAlt}
@@ -618,6 +631,7 @@ export default class ImageGallery extends React.Component {
                     sizes={item.sizes}
                     onLoad={this.props.onImageLoad}
                     onError={onImageError.bind(this)}
+                    style={style}
                 />
                 {
                     item.description &&

@@ -1,0 +1,16 @@
+.menu-labels{
+    font-family: Courier New;
+    color: #939393;
+    padding: 6px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 20px;
+    text-align: right;
+    max-width: 100%;
+    white-space: nowrap;
+}
+.menu-labels:hover{
+    color: #eeeeee;
+}
