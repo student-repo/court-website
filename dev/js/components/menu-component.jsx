@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux'
 import {Col, Row} from "pui-react-grids";
 import * as menuLabelCss from '../../scss/menu-label.css'
+import SmallScreenMenu from './menu-small-screen'
 
 
 
@@ -35,37 +36,50 @@ const style = {
     'margin': "5px"
 };
 
+const style4 = {
+    textAlign: "right"
+};
+
+const style5 = {
+    textAlign: "left"
+};
+
 const MenuComponent = () => (
     <Row style={divStyle}>
         <Col md={1}/>
         <Col md={4}>
             <img className="entryImage" src="Tennis-Logo-scale.png" alt="Unable to load image" style={style}/>
         </Col>
-        <Col md={4}/>
-        <Col md={1}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("News")}>News</font>
-        </Col>
-        <Col md={3}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Reservation")}>Reservation</font>
-        </Col>
-        <Col md={3}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Tennis School")}>Tennis School</font>
-        </Col>
-        <Col md={2}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Gallery")}>Gallery</font>
-        </Col>
-        <Col md={2}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Contact")}>Contact</font>
-        </Col>
-        <Col md={3}>
-            <br/>
-            <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Prices")}>Prices</font>
-        </Col>
+        {
+            window.innerWidth > 1270 ? <div>
+                <Col md={4}/>
+                <Col md={1}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("News")}>News</font>
+                </Col>
+                <Col md={3}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Reservation")}>Reservation</font>
+                </Col>
+                <Col md={3}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Tennis School")}>Tennis School</font>
+                </Col>
+                <Col md={2}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Gallery")}>Gallery</font>
+                </Col>
+                <Col md={2}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Contact")}>Contact</font>
+                </Col>
+                <Col md={3}>
+                    <br/>
+                    <font className="menu-labels" style={menuLabelCss} onClick={() => console.log(window.innerWidth)}>Prices</font>
+                </Col>
+            </div> :
+                        <SmallScreenMenu/>
+        }
     </Row>
 );
 
