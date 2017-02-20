@@ -5,14 +5,17 @@ import createLogger from 'redux-logger';
 import allReducers from '../reducers/index';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, IndexLink, browserHistory } from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
-import TabsExampleIconText from './example-tab'
 import io from 'socket.io-client';
 import _ from 'underscore'
-import scrollToElement from 'scroll-to-element';
+import App from './app';
+import News from './news'
+import ImageGallery from 'react-image-gallery'
+import App1 from './test'
+// import * as sss from '../../scss/div-style.css'
+// import * as sss1 from '../../../src/react-image.png'
 
-scrollToElement('#id');
 
 
 const logger = createLogger();
@@ -23,25 +26,6 @@ const store = createStore(
     allReducers,
     applyMiddleware(thunk, promise, logger)
 );
-
-const News = () => {
-    socket.on('INITIAL_DATA', function(data){
-        if(_.isUndefined(data.data)){
-            console.log("data undefined")
-        }
-        else{
-            console.log(data.data)
-        }
-    });
-    scrollToElement('.ddd123', {
-        offset: 0,
-        duration: 1500
-    });
-    return(
-    <div>
-        <h3>News</h3>
-    </div>
-)}
 
 const Reservation = () => (
     <div>
@@ -73,144 +57,56 @@ const Prices = () => (
     </div>
 )
 
-const App = ({children}) => {
+var divStyle = {
+    backgroundImage: 'url(react-image.png)',
+    top: '0px',
+    position: 'fixed',
+    zIndex: '100',
+    width: '100%'
+};
+var divStyle2 = {
+//     height: '249px',
+// width: '50px',
+// position: 'fixed',
+// left: '0px',
+// top: '200px',
+// zIndex: '100'
+};
+
+
+const AppWithProps = () => {
     return (
-    <div>
-        <TabsExampleIconText socket={socket}/>
-        {children}
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <div className="ddd123">
-            <h1>ala ma kota</h1>
-        </div>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-        <p>wadwfd awfa wf</p>
-    </div>
-)}
+        <App socket={socket}>
+            <App1/>
+            <News socket={socket}/>
+            <div style={divStyle}>
+                <div style={divStyle2}>
+                <p>ala ma kota ala ma kota ala ma kotaala ma kota ala ma kota ala ma kota ala ma kotaala</p>
+                    </div>
+                <br/>
+                ala ma kota ala ma kota ala ma kotaala ma kota ala ma kota ala ma kota ala ma kotaala
+            </div>
+            <TennisSchool/>
+            <Gallery/>
+            <Prices/>
+            <Contact/>
+        </App>
+    )
+};
+
+const NewsWithProps = () => {
+    return (
+        <News socket={socket}/>
+    )
+};
 
 const enhancedHistory = syncHistoryWithStore(browserHistory, store);
-
 
 const PageApp = () => (
     <Provider store={store}>
         <Router history={enhancedHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={News}/>
-                <Route path="/news" component={News}/>
-                <Route path="/reservation" component={Reservation}/>
-                <Route path="/tennis-school" component={TennisSchool}/>
-                <Route path="/gallery" component={Gallery}/>
-                <Route path="/contact" component={Contact}/>
-                <Route path="/prices" component={Prices}/>
-            </Route>
+            <Route path="/" component={AppWithProps}/>
+            <Route path="/reservation" component={Reservation}/>
         </Router>
     </Provider>
 );

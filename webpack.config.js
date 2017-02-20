@@ -34,19 +34,6 @@ module.exports = {
             },
         ]
     },
-    // module: {
-    //     loaders: [
-    //         {
-    //             test: /\.js$/,
-    //             loaders: ['babel'],
-    //             exclude: /node_modules/
-    //         },
-    //         {
-    //             test: /\.scss/,
-    //             loader: 'style-loader!css-loader!sass-loader'
-    //         }
-    //     ]
-    // },
     output: {
         path: 'src',
         filename: 'js/bundle.min.js'
