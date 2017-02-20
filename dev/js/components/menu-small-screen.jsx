@@ -6,8 +6,6 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import {grey100} from 'material-ui/styles/colors';
 import {Col, Row} from "pui-react-grids";
 
-
-
 const styles = {
     mediumIcon: {
         width: 48,
@@ -16,7 +14,7 @@ const styles = {
     medium: {
         width: 96,
         height: 96,
-        padding: 24,
+        padding: 24
     }
 };
 

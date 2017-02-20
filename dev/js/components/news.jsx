@@ -3,6 +3,7 @@ import _ from 'underscore'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {newsUpload} from '../actions/action-new-upload'
+import {Col, Row} from "pui-react-grids";
 
 const News = ({socket, newsUpload, news}) => {
     socket.on('INITIAL_DATA', function(data){
@@ -16,14 +17,14 @@ const News = ({socket, newsUpload, news}) => {
     });
 
     return(
-        <div>
+        <Row>
             <h3>News</h3>
             {news.map(key => {
                 return (
                     <p key={key.NewsID}>{key.Content}</p>
                 )
             })}
-        </div>
+        </Row>
     )}
 
 function mapStateToProps(state) {

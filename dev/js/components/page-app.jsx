@@ -11,7 +11,6 @@ import io from 'socket.io-client';
 import _ from 'underscore'
 import App from './app';
 import News from './news'
-import ImageGallery from 'react-image-gallery'
 import App1 from './test'
 import {Col, Row} from "pui-react-grids";
 
@@ -56,7 +55,7 @@ const Prices = () => (
 )
 
 
-
+// <ReactResizeDetector handleWidth handleHeight onResize={() => console.log("@@@@")} />
 const AppWithProps = () => {
     return (
         <App socket={socket}>
