@@ -4,6 +4,10 @@ import {syncHistoryWithStore} from 'react-router-redux'
 import {Col, Row} from "pui-react-grids";
 import * as menuLabelCss from '../../scss/menu-label.css'
 import SmallScreenMenu from './menu-small-screen'
+import ReactResizeDetector from 'react-resize-detector';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {resizeWindowUpdate} from '../actions/resize-window-state-action'
 
 
 
@@ -16,18 +20,6 @@ var divStyle = {
     width: '105%',
     height: '100px'
 };
-// width: '100%'
-// var divStyle2 = {
-// //     height: '249px',
-// // width: '50px',
-// // position: 'fixed',
-// // left: '0px',
-// // top: '200px',
-// // zIndex: '100'
-// };
-var divStyle2 = {
-    backgroundColor: '#333333'
-};
 
 const style = {
     'maxWidth': '100%',
@@ -36,22 +28,26 @@ const style = {
     'margin': "5px"
 };
 
-const style4 = {
+const menuModeChangeValue = 1270;
+
+const ss = {
+    whiteSpace: 'nowrap'
+}
+
+
+const sss = {
     textAlign: "right"
-};
+}
 
-const style5 = {
-    textAlign: "left"
-};
-
-const MenuComponent = () => (
+const MenuComponent = ({resizeWindowUpdate, windowWidth}) => (
     <Row style={divStyle}>
+        <ReactResizeDetector handleWidth handleHeight onResize={() => resizeWindowUpdate(window.innerWidth)} />
         <Col md={1}/>
-        <Col md={4}>
+        <Col md={4} style={ss}>
             <img className="entryImage" src="Tennis-Logo-scale.png" alt="Unable to load image" style={style}/>
         </Col>
         {
-            window.innerWidth > 1270 ? <div>
+            windowWidth > menuModeChangeValue ? <div>
                 <Col md={4}/>
                 <Col md={1}>
                     <br/>
@@ -78,7 +74,9 @@ const MenuComponent = () => (
                     <font className="menu-labels" style={menuLabelCss} onClick={() => console.log(window.innerWidth)}>Prices</font>
                 </Col>
             </div> :
+                <Col md={3} style={sss}>
                         <SmallScreenMenu/>
+                    </Col>
         }
     </Row>
 );
@@ -101,4 +99,14 @@ const descriptionStyle = {
     cursor: 'pointer'
 };
 
-export default MenuComponent;
+function mapStateToProps(state) {
+    return {
+        windowWidth:state.windowWidth
+    };
+}
+
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({resizeWindowUpdate: resizeWindowUpdate}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(MenuComponent);

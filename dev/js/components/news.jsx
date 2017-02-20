@@ -2,10 +2,9 @@ import React from 'react';
 import _ from 'underscore'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import scrollToElement from 'scroll-to-element';
 import {newsUpload} from '../actions/action-new-upload'
 
-const News = ({socket, newsUpload, news, users}) => {
+const News = ({socket, newsUpload, news}) => {
     socket.on('INITIAL_DATA', function(data){
         if(_.isUndefined(data.data)){
             console.log("data undefined")

@@ -20,13 +20,9 @@ const styles = {
     }
 };
 
-const style = {
-    textAlign: "right"
-};
 
 const SmallScreenMenu = () => (
-        <IconMenu style={style}
-            iconButtonElement={<IconButton iconStyle={styles.mediumIcon}
+        <IconMenu iconButtonElement={<IconButton iconStyle={styles.mediumIcon}
                                            style={styles.medium}><MenuIcon color={grey100}/></IconButton>}
         >
             <MenuItem value="1" primaryText="News" />
