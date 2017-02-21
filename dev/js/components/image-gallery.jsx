@@ -14,22 +14,7 @@ const style = {
     'cursor': 'pointer',
     'MaxHeight': '500px',
     'marginTop': '100px'
-}
-
-const images = [
-    {
-        original: `tennis-banner-3.jpg`,
-        originalClass: 'featured-slide',
-        description: 'Custom class for slides & thumbnails'
-    },
-    {
-        original: `tennis-ball-resize2.jpg`,
-        description: 'Render custom slides within the gallery',
-    },
-    {
-        original: `tennis-racket3.jpg`,
-    }
-];
+};
 
 const renderRightNav = (onClick, disabled) => {
     return (
@@ -202,7 +187,7 @@ export default class ImageGallery extends React.Component {
             }
         }
 
-        let slideCount = images.length - 1;
+        let slideCount = this.props.items.length - 1;
         let nextIndex = index;
 
         if (index < 0) {
@@ -386,7 +371,7 @@ export default class ImageGallery extends React.Component {
     }
 
     _canNavigate() {
-        return images.length >= 2;
+        return this.props.items.length >= 2;
     }
 
     _canSlideLeft() {
@@ -469,11 +454,11 @@ export default class ImageGallery extends React.Component {
                 break;
         }
 
-        if (images.length >= 3) {
-            if (index === 0 && currentIndex === images.length - 1) {
+        if (this.props.items.length >= 3) {
+            if (index === 0 && currentIndex === this.props.items.length - 1) {
                 // set first slide as right slide if were sliding right from last slide
                 alignment = ` ${RIGHT}`;
-            } else if (index === images.length - 1 && currentIndex === 0) {
+            } else if (index === this.props.items.length - 1 && currentIndex === 0) {
                 // set last slide as left slide if were sliding left from first slide
                 alignment = ` ${LEFT}`;
             }
@@ -537,7 +522,7 @@ export default class ImageGallery extends React.Component {
     _getSlideStyle(index) {
         const {currentIndex, offsetPercentage} = this.state;
         const baseTranslateX = -100 * currentIndex;
-        const totalSlides = images.length - 1;
+        const totalSlides = this.props.items.length - 1;
 
         // calculates where the other slides belong based on currentIndex
         let translateX = baseTranslateX + (index * 100) + offsetPercentage;
@@ -554,7 +539,7 @@ export default class ImageGallery extends React.Component {
             zIndex = 0;
         }
 
-        if (images.length > 2) {
+        if (this.props.items.length > 2) {
             if (currentIndex === 0 && index === totalSlides) {
                 // make the last slide the slide before the first
                 translateX = -100 + offsetPercentage;
@@ -565,7 +550,7 @@ export default class ImageGallery extends React.Component {
         }
 
         // Special case when there are only 2 items with infinite on
-        if (images.length === 2) {
+        if (this.props.items.length === 2) {
             translateX = this._getTranslateXForTwoSlide(index);
         }
 
@@ -660,7 +645,7 @@ export default class ImageGallery extends React.Component {
         let thumbnails = [];
         let bullets = [];
 
-        images.map((item, index) => {
+        this.props.items.map((item, index) => {
             const alignment = this._getAlignmentClassName(index);
             const originalClass = item.originalClass ?
                 ` ${item.originalClass}` : '';
@@ -762,7 +747,7 @@ export default class ImageGallery extends React.Component {
                 {' / '}
               </span>
                         <span className='image-gallery-index-total'>
-                {images.length}
+                {this.props.items.length}
               </span>
                     </div>
                 }

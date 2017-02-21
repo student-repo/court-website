@@ -8,7 +8,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {resizeWindowUpdate} from '../actions/resize-window-state-action'
 import { WindowResizeListener } from 'react-window-resize-listener';
-
+import {Link, withRouter} from "react-router";
+import scrollToElement from 'scroll-to-element';
 
 const imageStyle = {
     'maxWidth': '100%',
@@ -28,23 +29,23 @@ const menuStyle = {
 }
 
 
-const MenuComponent = ({resizeWindowUpdate, windowWidth}) => (
+const MenuComponent = ({resizeWindowUpdate, windowWidth, router}) => (
     <Row>
         <WindowResizeListener onResize={windowSize => resizeWindowUpdate(windowSize.windowWidth)}/>
 
         {windowWidth > menuModeChangeValue ?
             <Col md={4} style={menuStyle}>
-                <img className="entryImage" src="Tennis-Logo-scale.png" alt="Unable to load image" style={imageStyle}/>
-                <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("News")}>News</font>
-                <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Reservation")}>Reservation</font>
-                <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Tennis School")}>Tennis School</font>
+                <img className="entryImage" src="./images/Tennis-Logo-scale3.png" alt="Unable to load image" style={imageStyle} onClick={() => scrollToElement('.application', {offset: -95,duration: 1500})}/>
+                <font className="menu-labels" style={menuLabelCss} onClick={() => scrollToElement('.news', {offset: -95,duration: 1500})}>News</font>
+                <font className="menu-labels" style={menuLabelCss} onClick={() => router.push('/reservation')}>Reservation</font>
+                <font className="menu-labels" style={menuLabelCss} onClick={() => scrollToElement('.tennis-school', {offset: -95,duration: 1500})}>Tennis School</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Gallery")}>Gallery</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Contact")}>Contact</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Prices")}>Prices</font>
             </Col> :
             <div>
                 <Col md={4} style={menuStyle}>
-                    <img className="entryImage" src="Tennis-Logo-scale.png" alt="Unable to load image" style={imageStyle}/>
+                    <img className="entryImage" src="./images/Tennis-Logo-scale.png" alt="Unable to load image" style={imageStyle}/>
                         <SmallScreenMenu />
                 </Col>
             </div>
@@ -62,4 +63,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({resizeWindowUpdate: resizeWindowUpdate}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(MenuComponent);
+export default withRouter(connect(mapStateToProps, matchDispatchToProps)(MenuComponent));

@@ -11,8 +11,9 @@ import io from 'socket.io-client';
 import _ from 'underscore'
 import App from './app';
 import News from './news'
-import App1 from './test'
+import MenuImageGallery from './menu-image-gallery'
 import {Col, Row} from "pui-react-grids";
+import TennisSchool from './tennis-school'
 
 
 const logger = createLogger();
@@ -30,11 +31,11 @@ const Reservation = () => (
     </div>
 )
 
-const TennisSchool = () => (
-    <div>
-        <h3>Tennis School</h3>
-    </div>
-)
+// const TennisSchool = () => (
+//     <div>
+//         <h3>Tennis School</h3>
+//     </div>
+// )
 
 const Gallery = () => (
     <div>
@@ -59,9 +60,9 @@ const Prices = () => (
 const AppWithProps = () => {
     return (
         <App socket={socket}>
-            <App1/>
+            <MenuImageGallery/>
             <News socket={socket}/>
-            <TennisSchool/>
+            <TennisSchool socket={socket}/>
             <Gallery/>
             <Prices/>
             <Contact/>

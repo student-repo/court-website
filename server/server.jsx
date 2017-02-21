@@ -25,9 +25,20 @@ io.on('connection', function(socket){
             return;
         }
         else{
-            io.sockets.emit('INITIAL_DATA', {data: result});
+            io.sockets.emit('INITIAL_DATA_NEWS', {data: result});
         }
     });
+        connection.query('SELECT * FROM coach', function(err, result){
+            if(err){
+                console.error(err);
+                return;
+            }
+            else{
+                io.sockets.emit('INITIAL_DATA_TENNIS_SCHOOL', {data: result});
+            }
+        });
+
+
 
     // socket.on('REGISTER_DATA', function(data){
     //     var salt = Math.random().toString(36).substring(7);

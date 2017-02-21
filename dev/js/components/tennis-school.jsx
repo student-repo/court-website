@@ -2,13 +2,13 @@ import React from 'react';
 import _ from 'underscore'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {newsUpload} from '../actions/action-new-upload'
+import {tennisSchoolUpload} from '../actions/tenni-school-upload-action'
 import {Col, Row} from "pui-react-grids";
 import Gallery from './gallery';
 
 
 const DEFAULT_IMAGES = [
-    { id: '12312d12d1d12d1d1', caption: 'Photo by Alan Emery', orientation: 'square', useForDemo: true }
+    { id: '1470619549108-b85c56fe5be8', caption: 'Photo by Alan Emery', orientation: 'square', useForDemo: true }
 ];
 
 const newsStyle = {
@@ -19,7 +19,7 @@ const newsStyle = {
     fontSize: '35px',
     textAlign: 'center',
     maxWidth: '100%',
-    color: 'black'
+    color: '#eeeeee'
 };
 
 const titleStyle = {
@@ -29,7 +29,7 @@ const titleStyle = {
     fontWeight: 'bold',
     fontSize: '20px',
     maxWidth: '100%',
-    color: '#696969',
+    color: '#b3b3b3',
 };
 
 const dateStyle = {
@@ -38,7 +38,7 @@ const dateStyle = {
     borderRadius: '6px',
     fontSize: '10px',
     maxWidth: '100%',
-    color: '#b3b3b3',
+    color: '#e6e6e6',
 };
 
 const contentStyle = {
@@ -47,46 +47,40 @@ const contentStyle = {
     borderRadius: '6px',
     fontSize: '15px',
     maxWidth: '100%',
-    color: '#8c8c8c',
+    color: '#a6a6a6',
 };
 
-const News = ({socket, newsUpload, news, router}) => {
-    socket.on('INITIAL_DATA_NEWS', function(data){
+const menuStyle = {
+    backgroundColor: '#4d4d4d',
+}
+
+
+const TennisSchool = ({socket, tennisSchoolUpload, router, tennisSchool, news}) => {
+    socket.on('INITIAL_DATA_TENNIS_SCHOOL', function(data){
         if(_.isUndefined(data.data)){
             console.log("data undefined")
         }
         else{
-            newsUpload(data.data);
+            tennisSchoolUpload(data.data);
             console.log(data.data)
         }
     });
 
     return(
-        <Row className="news">
+        <Row className="tennis-school" style={menuStyle}>
             <Col md={1}/>
             <Col md={22} style={{maxWidth: '70vw', float: 'none', margin: '0 auto'}}>
                 <Row style={{textAlign: 'center'}}>
                     <br/>
-                    <font style={newsStyle}>News</font>
+                    <font style={newsStyle}>Tennis School</font>
+                    <br/>
+                    <br/>
                 </Row>
-                {news.map(key => {
+                {tennisSchool.map(key => {
                     return (
-                        <Row key={key.NewsID + Math.random()}>
-                            <Row key={key.NewsID + Math.random()}>
+                        <Row key={key.CoachID + Math.random()}>
+                            <Row key={key.CoachID + Math.random()}>
                                 <Col md={13}>
-                                    <font style={titleStyle} key={key.NewsID + Math.random()}>{key.Title}</font>
-                                </Col>
-                            </Row>
-                            <Row key={key.NewsID + Math.random()}>
-                                <Col md={13}>
-                                    <font style={dateStyle} key={key.NewsID + Math.random()}>{key.Date}</font>
-                                </Col>
-                            </Row>
-                            <Row key={key.NewsID + Math.random()}>
-                                <Col md={13}>
-                                    <font style={contentStyle} key={key.NewsID + Math.random()}>{key.Content}</font>
-                                </Col>
-                                <div>
                                     <Gallery key={Math.random()} images={DEFAULT_IMAGES.map(({ caption, id, orientation, useForDemo }) => ({
                                         src: key.Image,
                                         thumbnail: key.Image,
@@ -94,7 +88,16 @@ const News = ({socket, newsUpload, news, router}) => {
                                         orientation,
                                         useForDemo,
                                     }))} />
-                                </div>
+                                </Col>
+                                <Col md={9}>
+                                    <Row>
+                                        <font style={titleStyle} key={key.CoachID + Math.random()}>{key.Name + " " + key.VorName}</font>
+                                    </Row>
+                                    <br/>
+                                    <Row>
+                                        <font style={contentStyle} key={key.CoachID + Math.random()}>{key.Description}</font>
+                                    </Row>
+                                </Col>
                             </Row>
                             <br/>
                             <br/>
@@ -110,12 +113,13 @@ const News = ({socket, newsUpload, news, router}) => {
 
 function mapStateToProps(state) {
     return {
-        news:state.news,
+        tennisSchool: state.tennisSchool,
+        news: state.news
     };
 }
 
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({newsUpload: newsUpload}, dispatch);
+    return bindActionCreators({tennisSchoolUpload: tennisSchoolUpload}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(News);
+export default connect(mapStateToProps, matchDispatchToProps)(TennisSchool);
