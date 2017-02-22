@@ -40,8 +40,8 @@ const MenuComponent = ({resizeWindowUpdate, windowWidth, router}) => (
                 <font className="menu-labels" style={menuLabelCss} onClick={() => router.push('/reservation')}>Reservation</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => scrollToElement('.tennis-school', {offset: -95,duration: 1500})}>Tennis School</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Gallery")}>Gallery</font>
-                <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Contact")}>Contact</font>
                 <font className="menu-labels" style={menuLabelCss} onClick={() => console.log("Prices")}>Prices</font>
+                <font className="menu-labels" style={menuLabelCss} onClick={() => scrollToElement('.contact', {offset: -95,duration: 1500})}>Contact</font>
             </Col> :
             <div>
                 <Col md={4} style={menuStyle}>

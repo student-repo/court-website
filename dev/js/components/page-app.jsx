@@ -14,6 +14,7 @@ import News from './news'
 import MenuImageGallery from './menu-image-gallery'
 import {Col, Row} from "pui-react-grids";
 import TennisSchool from './tennis-school'
+import Contact from './contact'
 
 
 const logger = createLogger();
@@ -43,12 +44,6 @@ const Gallery = () => (
     </div>
 )
 
-const Contact = () => (
-    <div>
-        <h3>Contact</h3>
-    </div>
-)
-
 const Prices = () => (
     <div>
         <h3>Prices</h3>
@@ -65,7 +60,14 @@ const AppWithProps = () => {
             <TennisSchool socket={socket}/>
             <Gallery/>
             <Prices/>
-            <Contact/>
+            <Contact center={{lat: 52.736635, lng: 15.267718}} zoom={13}/>
+            <Row style={{backgroundColor: '#4d4d4d'}}>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </Row>
         </App>
     )
 };
