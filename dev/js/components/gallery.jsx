@@ -1,162 +1,117 @@
-import React, { Component, PropTypes } from 'react';
-import { css, StyleSheet } from 'aphrodite/no-important';
-import Lightbox from 'react-images';
+import React, { Component } from 'react';
+import {Col, Row} from "pui-react-grids";
+import {ClusterMarker} from 'google-map-react'
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui/svg-icons/communication/location-on';
+import {redA700} from 'material-ui/styles/colors';
+import GalleryComponent from './gallery-component';
 
-class Gallery extends Component {
-    constructor () {
-        super();
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-        this.state = {
-            lightboxIsOpen: false,
-            currentImage: 0,
-        };
 
-        this.closeLightbox = this.closeLightbox.bind(this);
-        this.gotoNext = this.gotoNext.bind(this);
-        this.gotoPrevious = this.gotoPrevious.bind(this);
-        this.gotoImage = this.gotoImage.bind(this);
-        this.handleClickImage = this.handleClickImage.bind(this);
-        this.openLightbox = this.openLightbox.bind(this);
-    }
-    openLightbox (index, event) {
-        event.preventDefault();
-        this.setState({
-            currentImage: index,
-            lightboxIsOpen: true,
-        });
-    }
-    closeLightbox () {
-        this.setState({
-            currentImage: 0,
-            lightboxIsOpen: false,
-        });
-    }
-    gotoPrevious () {
-        this.setState({
-            currentImage: this.state.currentImage - 1,
-        });
-    }
-    gotoNext () {
-        this.setState({
-            currentImage: this.state.currentImage + 1,
-        });
-    }
-    gotoImage (index) {
-        this.setState({
-            currentImage: index,
-        });
-    }
-    handleClickImage () {
-        if (this.state.currentImage === this.props.images.length - 1) return;
+const AnyReactComponent = ({ text }) => <div><IconButton tooltip="Tennis Ptasia Court" touch={true} tooltipPosition="top-center" ><MenuIcon color={redA700}/></IconButton></div>;
 
-        this.gotoNext();
-    }
-    renderGallery () {
-        const { images } = this.props;
-
-        if (!images) return;
-
-        const gallery = images.filter(i => i.useForDemo).map((obj, i) => {
-            return (
-                <a
-                    href={obj.src}
-                    className={css(classes.thumbnail, classes[obj.orientation])}
-                    key={i}
-                    onClick={(e) => this.openLightbox(i, e)}
-                >
-                    <img src={obj.thumbnail} className={css(classes.source)} />
-                </a>
-            );
-        });
-
-        return (
-            <div className={css(classes.gallery)}>
-                {gallery}
-            </div>
-        );
-    }
-    render () {
-        return (
-            <div className="section">
-                {this.props.heading && <h2>{this.props.heading}</h2>}
-                {this.props.subheading && <p>{this.props.subheading}</p>}
-                {this.renderGallery()}
-                <Lightbox
-                    currentImage={this.state.currentImage}
-                    images={this.props.images}
-                    isOpen={this.state.lightboxIsOpen}
-                    onClickImage={this.handleClickImage}
-                    onClickNext={this.gotoNext}
-                    onClickPrev={this.gotoPrevious}
-                    onClickThumbnail={this.gotoImage}
-                    onClose={this.closeLightbox}
-                    showThumbnails={this.props.showThumbnails}
-                    theme={this.props.theme}
-                />
-            </div>
-        );
-    }
+const newsStyle = {
+    fontFamily: 'Courier New',
+    padding: '6px',
+    borderRadius: '6px',
+    fontWeight: 'bold',
+    fontSize: '40px',
+    textAlign: 'center',
+    maxWidth: '100%',
+    color: 'black'
 };
 
-Gallery.displayName = 'Gallery';
-Gallery.propTypes = {
-    heading: PropTypes.string,
-    images: PropTypes.array,
-    showThumbnails: PropTypes.bool,
-    subheading: PropTypes.string,
+const styles = {
+    mediumIcon: {
+        width: 48,
+        height: 48,
+    },
+    medium: {
+        width: 96,
+        height: 96
+    }
+};
+const titleStyle = {
+    fontFamily: 'Courier New',
+    padding: '6px',
+    borderRadius: '6px',
+    fontWeight: 'bold',
+    fontSize: '25px',
+    maxWidth: '100%',
+    color: '#696969'
 };
 
-const gutter = {
-    small: 2,
-    large: 4,
+const contentStyle = {
+    fontFamily: 'Courier New',
+    padding: '6px',
+    borderRadius: '6px',
+    fontSize: '20px',
+    maxWidth: '100%',
+    color: '#8c8c8c',
 };
-const classes = StyleSheet.create({
-    gallery: {
-        marginRight: -gutter.small,
-        overflow: 'hidden',
 
-        '@media (min-width: 500px)': {
-            marginRight: -gutter.large,
-        },
-    },
+const THUMBNAIL_IMAGES = [
+    { id: '1454991727061-be514eae86f7', caption: 'Photo by Thomas Kelley', orientation: 'landscape', useForDemo: true }, // https://unsplash.com/photos/t20pc32VbrU (Hump Back Whale)
+    { id: '1455717974081-0436a066bb96', caption: 'Photo by Teddy Kelley', orientation: 'landscape', useForDemo: true }, // https://unsplash.com/photos/cmKPOUgdmWc (Deer)
+    { id: '1460899960812-f6ee1ecaf117', caption: 'Photo by Jay Ruzesky', orientation: 'landscape', useForDemo: true }, // https://unsplash.com/photos/h13Y8vyIXNU (Walrus)
+    { id: '1456926631375-92c8ce872def', caption: 'Photo by Gwen Weustink', orientation: 'landscape', useForDemo: true }, // https://unsplash.com/photos/I3C1sSXj1i8 (Leopard)
+    { id: '1452274381522-521513015433', caption: 'Photo by Adam Willoughby-Knox', orientation: 'landscape', useForDemo: true }, // https://unsplash.com/photos/_snqARKTgoc (Mother and Cubs)
+    { id: '1471145653077-54c6f0aae511', caption: 'Photo by Boris Smokrovic', orientation: 'landscape', useForDemo: true  }, // https://unsplash.com/photos/n0feC_PWFdk (Dragonfly)
+    { id: '1471005197911-88e9d4a7834d', caption: 'Photo by Gaetano Cessati', orientation: 'landscape', useForDemo: true  }, // https://unsplash.com/photos/YOX8ZMTo7hk (Baby Crocodile)
+    { id: '1470583190240-bd6bbde8a569', caption: 'Photo by Alan Emery', orientation: 'landscape' ,useForDemo: true }, // https://unsplash.com/photos/emTCWiq2txk (Beetle)
+    { id: '1470688090067-6d429c0b2600', caption: 'Photo by Ján Jakub Naništa', orientation: 'landscape' ,useForDemo: true }, // https://unsplash.com/photos/xqjO-lx39B4 (Scottish Highland Cow)
+    { id: '1470742292565-de43c4b02b57', caption: 'Photo by Eric Knoll', orientation: 'landscape' , useForDemo: true }, // https://unsplash.com/photos/DmOCkOnx-MQ (Cheetah)
+    // https://unsplash.com/photos/NUMlxTPsznM coyote?
+];
 
-    // anchor
-    thumbnail: {
-        boxSizing: 'border-box',
-        display: 'block',
-        float: 'left',
-        lineHeight: 0,
-        paddingRight: gutter.small,
-        paddingBottom: gutter.small,
-        overflow: 'hidden',
 
-        '@media (min-width: 500px)': {
-            paddingRight: gutter.large,
-            paddingBottom: gutter.large,
-        },
-    },
 
-    // orientation
-    landscape: {
-        width: '100%',
-    },
-    square: {
-        paddingBottom: 0,
-        width: '100%',
+function makeUnsplashSrc (id) {
+    return `https://images.unsplash.com/photo-${id}?dpr=2&auto=format&w=1024&h=1024`;
+}
+function makeUnsplashSrcSet (id, size) {
+    return `https://images.unsplash.com/photo-${id}?dpr=2&auto=format&w=${size} ${size}w`;
+}
+function makeUnsplashThumbnail (id, orientation = 'landscape') {
+    const dimensions = orientation === 'square'
+        ? 'w=300&h=300'
+        : 'w=240&h=159';
 
-        '@media (min-width: 500px)': {
-            paddingBottom: 0,
-        },
-    },
+    return `https://images.unsplash.com/photo-${id}?dpr=2&auto=format&crop=faces&fit=crop&${dimensions}`;
+}
 
-    // actual <img />
-    source: {
-        border: 0,
-        display: 'block',
-        height: 'auto',
-        maxWidth: '100%',
-        width: 'auto',
-    },
-});
 
-export default Gallery;
+
+
+const Gallery = ({center, zoom}) => (
+    <Row className="gallery">
+        <Row style={{textAlign: 'center'}}>
+            <br/>
+            <font style={newsStyle}>Gallery</font>
+            <br/>
+            <br/>
+        </Row>
+        <Row>
+        <Col md={1}/>
+        <Col md={22} >
+            <GalleryComponent images={THUMBNAIL_IMAGES.map(({ caption, id, orientation, useForDemo }) => ({
+                src: makeUnsplashSrc(id),
+                thumbnail: makeUnsplashThumbnail(id, orientation),
+                srcset: [
+                    makeUnsplashSrcSet(id, 1024),
+                    makeUnsplashSrcSet(id, 800),
+                    makeUnsplashSrcSet(id, 500),
+                    makeUnsplashSrcSet(id, 320),
+                ],
+                caption,
+                orientation,
+                useForDemo,
+            }))} showThumbnails />
+        </Col>
+        <Col md={1}/>
+            </Row>
+    </Row>
+);
+
+export default Gallery

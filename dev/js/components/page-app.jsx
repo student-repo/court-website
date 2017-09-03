@@ -15,6 +15,7 @@ import MenuImageGallery from './menu-image-gallery'
 import {Col, Row} from "pui-react-grids";
 import TennisSchool from './tennis-school'
 import Contact from './contact'
+import Gallery from './gallery';
 
 
 const logger = createLogger();
@@ -32,18 +33,6 @@ const Reservation = () => (
     </div>
 )
 
-// const TennisSchool = () => (
-//     <div>
-//         <h3>Tennis School</h3>
-//     </div>
-// )
-
-const Gallery = () => (
-    <div>
-        <h3>Gallery</h3>
-    </div>
-)
-
 const Prices = () => (
     <div>
         <h3>Prices</h3>
@@ -51,7 +40,7 @@ const Prices = () => (
 )
 
 
-// <ReactResizeDetector handleWidth handleHeight onResize={() => console.log("@@@@")} />
+
 const AppWithProps = () => {
     return (
         <App socket={socket}>

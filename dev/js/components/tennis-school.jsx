@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {tennisSchoolUpload} from '../actions/tenni-school-upload-action'
 import {Col, Row} from "pui-react-grids";
-import Gallery from './gallery';
+import Gallery from './single-image-view';
 
 
 const DEFAULT_IMAGES = [
@@ -16,7 +16,7 @@ const newsStyle = {
     padding: '6px',
     borderRadius: '6px',
     fontWeight: 'bold',
-    fontSize: '35px',
+    fontSize: '40px',
     textAlign: 'center',
     maxWidth: '100%',
     color: '#eeeeee'
@@ -27,7 +27,7 @@ const titleStyle = {
     padding: '6px',
     borderRadius: '6px',
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: '30px',
     maxWidth: '100%',
     color: '#b3b3b3',
 };
@@ -45,7 +45,7 @@ const contentStyle = {
     fontFamily: 'Courier New',
     padding: '6px',
     borderRadius: '6px',
-    fontSize: '15px',
+    fontSize: '20px',
     maxWidth: '100%',
     color: '#a6a6a6',
 };
